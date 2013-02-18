@@ -1,0 +1,283 @@
+#Correct format:
+#lang	 s	t
+#when this rule is present, all occurences of sound "s" will be changed to "t".
+#* means all languages
+#t can be null, like the first rule in this file which means that sound will be removed.
+# All languages
+*     ʿ	
+# PROTO
+proto	3	E
+proto	E	e
+proto	V	a
+proto	O	a
+proto	U	u
+# ESTONIAN
+est  D  t
+est  G  k
+est  â  aa   # â only once in data, ā 3 times
+est  ā  aa
+est  ō  oo
+
+# map all variants of EST õ -> SUT = e̮ (Note: ǫ is not in SUT, do not use now)
+est  õ  e̮    # 1-character glyph -> 1-character glyph
+est  ǫ  e̮    # 2-character glyph -> 1-character glyph
+est  ǫ  e̮    # 1-character glyph -> 1-character glyph
+# e̮ identical feature vectors e+(char)814 : horizontal -> medium; e -> õ
+# 2-character glyph
+
+
+# EST-TODO: the following glyphs occur only once in data (see est-est-alignment)
+#   ŋ  ŋ̄   à  ń  z  ō
+
+
+# FINNISH
+# fin  ẙ  y    # only 1
+fin  ẙ  ü    # only 1
+fin  y  ü
+fin  äʾ ä    # only in SSA
+ 
+
+# HUNGARIAN
+# ugr  V́   V̄    # char(769) means long vowel --> char(772)
+# ugr  Cy  Ć    # y means palatalization of prev. consonants --> char(769) applied to prev glyph
+
+# CONSONANT-Y -> Ć
+ugr  by  b́
+ugr  cy  ć
+ugr  dy  d́
+ugr  fy  f́
+ugr  gy  d́    # palatalized *d* (dental, not g velar) --> char(769) applied to "d"
+ugr  ly  ĺ    # *NOTE* not *j* 
+ugr  ny  ń
+ugr  ty  t́    # hattyū in ugr-ugr
+
+# VOWEL-V́  -> V̄
+ugr  á  ā
+ugr  é  ē
+ugr  í  ī
+ugr  ó  ō
+ugr  ú  ū
+ugr  ǘ  ǖ
+
+ugr  ű   ǖ   # long ü
+ugr  ő   ȫ   # long ö
+ugr  ö̋   ȫ   # encoding problem?
+ugr  ë   e   # rule: char(776) makes vowel front / e is front already
+
+ugr  dzs ǯ
+ugr  cs  č
+ugr  dz  ʒ
+ugr  zs  ž
+ugr  sz  %   # sz -> s
+ugr  s   š
+ugr  %   s
+
+# MORDVA
+mrd  i̥    i   # unknown conversion rule.  Could be ị -> horizontal value of glyph i is 'back'
+#mrd \u0060
+
+# UDMURT    #fix these at some point
+udm  ị̑  i
+udm  i̯  i
+udm  i̊  i   # only 1 in data, rounded i = y
+udm  ̊       # one wih e, one with a
+# udm ü   y   # only 1 ü, 4 y
+udm  y  ü   # only 1 ü, 4 y
+
+# KOMI
+kom  e̯  e
+kom  i̯  i
+kom  o̯  o
+kom  ë  e
+kom  ø  i̮    # new rule, check!!!
+kom  y  ü
+
+
+# KHN = XANTY
+khn  i̊  i   # makes i rounded --> y, but ü in data
+khn  i̯  i   # more fron than normally, no way to use this
+khn  k͔  k   # only 1 in data, unknown rule
+khn  á  a   # only 1 in data, unknown rule
+khn  ő  e̮   # only 1 in data
+khn  ǫ  e̮   # only 1 in data, ǫ 5 times
+khn  ṣ̌  š   # only 2 in data, both features make s retroflex
+khn  `      # (char)96
+
+
+# MAN
+man  `       # (char) 96, deleted, ok?
+
+man  q  k    # ??? 2 times: qāp, qōr
+man  s̆  š    # only 1 in data, typo?
+man  ɫ́  ĺ    # new rule, check!!!
+man  ɫ  l    # new rule, check!!!
+man  e̯  e    # new rule, check!!!
+man  n̰  n    # new rule, check!!!
+man  ṗ  p    # new rule, check!!!
+
+man  ė  e    # ̇ (775) makes vowel front, e front already, occurences: e 9, ė 23
+man  e̊  e    # only 1 in data. circle makes e rounded, --> ö?
+man  é  e    # only 1 in data, unknown feature
+man  ė̄  ē    # only 1 in data
+
+man  ɨ̄  ī
+man  i̊  i    # makes i rounded = y = ü, 2 in data
+
+man  o̰  o    # only 1 in data, unknown feature
+man  ø̄  ō    # ???, only 1
+man  ọ  o    # ̣ (803) makes vowel back, o back already, only 1 in data
+
+man  u̯  u    # only 1 in data, higher u?
+man  ú  u    # only 1 in data, unknown feature
+man  ǖ͔  ǖ
+
+man  ɔ̄̈  ɔ̄     #  ɔ̄: VoBu5   or     ɔ̄̈:  VoFu5 ???
+
+man  x  χ    # 2 times
+man  kh  χ
+man  sch  š
+man  gh  ɣ
+
+man  k͔  k
+
+
+# MAR
+mar  á  a    # unknown feature, 4 in data
+mar  é  e    # unknown feature, 1 in data
+mar  ë  e    # e front already, 1 in data
+
+# SAAMI
+saa  `        # removed, e.g. ńett`
+*  '        # removed, e.g. rač'čâ
+
+# unknown sounds
+saa  æ  eä
+saa  œ  eö    # correct?
+saa  α  a     # unknown, e.g. kuoɔk̀ α
+saa  ø  o     # unknown e.g. løkk
+saa  D  d     # unknown e.g. jė̆ä̆DD
+saa  đ  δ
+saa  G  g     # unknown e.g. Gó͕ùdɛ
+saa  H  h     # unknown, e.g.  p u̮  H t ́ɛ G ɛ̮
+saa  Z  z     # unknown, e.g.  ūloDŽ́
+saa  q  k     # e.g. qweitse
+saa  ǫ  e̮    # 2-character glyph -> 1-character glyph
+saa  ǫ  e̮    # 1-character glyph -> 1-character glyph
+saa  ǭ  ē̮    # 2-character glyph -> 1-character glyph
+saa  ǭ  ē̮̮    # 1-character glyph -> 1-character glyph
+
+# unknown features
+
+saa  a͔  a     # 2 in data, unknown feature
+saa  ḁ  a     # 1 in data, unknown feature  ̥  (805)
+saa  ą̇  ȃ     # 1 in data, unknown feature combination   a 97  ̨ 808  ̇ 775
+saa  a̮  ȃ     # ȧ, a̮ , ȃ : all of them make horizontal articulation central
+
+saa  ȧ  ȃ
+saa  ā  â     # in sut this holds, what is the meaning of â here. â 217 times in data, ā 20, a 137
+
+saa  e̯  e     # 1 in data
+saa  ë  e
+saa  ǝ̆  ĕ
+saa  ė̆  ĕ
+
+saa  i̯  i     # 4 in data
+saa  ị̑  i     # 1 in data, unknown combination
+saa  y  i̊      #  i̊   12 times in data, y 2 times
+
+saa  ò̮  o̮
+
+saa  o͕  o     # 2 in data, unknown feature
+saa  ó  o
+saa  ó͕  o     # 1 in data
+saa  ô  ō     # same thing with (ā , â)
+saa  ǒ  o     # 1 in data ((char)780)
+saa  ō̰  ō     # unknown feature
+saa  ŏ͔  ŏ     # unknown feature
+saa  ȯ  o̮
+
+saa  u͕  u     # unknown feature
+saa  ŭ͔  ŭ     # unknown feature
+saa  ū̯  ū     # unknown feature
+
+saa  g̲  g    # 1 in data
+saa  k˜  k    # 1 in data, ˜ (732)
+saa  k̀   k    # 2 in data
+saa  k͕   k    # 1 in data,  ͔ (852) unknown
+
+saa  l͔   l    # 1 in data,  ͔ (852) unknown
+saa  ɫ  l
+*    ľ  ĺ
+*    ĺ  ĺ     # 2-char glyph -> 1-char glyph
+
+saa  n̨   n    # 2 in data, ̨  (808) unknown
+saa  ñ   n    # 2 in data, unknown feature
+saa  ŋ͕   ŋ    # 1 in data,   ͕ 853 unknown
+saa  ŋ͕́   ŋ    # 1 in data
+saa  r̀   r    # 1 in data, ̀  (768) unknown
+saa  s̨̄   s    # 1 in data
+saa  t̀   t    # 2 in data, ̀  (768) unknown
+saa  š̨   š    # 1 in data,   ̨ (808) unknown
+saa  tj  č    # seems safe, should check
+saa  ė̄   ē    # added by guowei, not sure
+
+
+##############################################################################
+
+man  í  i   
+
+mrd  Ĺ  ĺ
+mrd  L  l
+mrd  J  j
+
+udm  ȋ   i 
+
+##############################################################################
+# SSA:
+
+# VATJA
+va   õ  o
+
+sm   ’  
+ka   y  ü
+
+li   ʾ  ʔ
+ve   õ   e̮
+
+man  β  s
+man  D  d
+man  = 
+
+##############################################################################
+# CYRILLIC MAPPING (for sanity checks only)
+fin-cyr  ẙ  ю
+fin-cyr  a  а
+fin-cyr  b  б
+fin-cyr  c  ц
+fin-cyr  d  д
+fin-cyr  e  е
+fin-cyr  f  ф
+fin-cyr  g  г
+fin-cyr  h  х
+fin-cyr  i  и
+fin-cyr  j  й
+fin-cyr  k  к
+fin-cyr  l  л
+fin-cyr  m  м
+fin-cyr  n  н
+fin-cyr  o  о
+fin-cyr  p  п
+fin-cyr  q  q
+fin-cyr  r  р
+fin-cyr  s  с
+fin-cyr  t  т
+fin-cyr  u  у
+fin-cyr  v  в
+fin-cyr  w  w
+fin-cyr  x  z
+fin-cyr  y  ю
+fin-cyr  z  з
+fin-cyr  å  å
+fin-cyr  ä  я
+fin-cyr  ö  ё
+
